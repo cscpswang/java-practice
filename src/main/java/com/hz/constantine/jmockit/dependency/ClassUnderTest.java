@@ -3,8 +3,6 @@
  */
 package com.hz.constantine.jmockit.dependency;
 
-import com.sun.tools.classfile.Dependency;
-
 /**
  * @Description: (用一句话描述该文件做什么)
  * @author: xiangji
@@ -18,7 +16,7 @@ public final class ClassUnderTest {
 
     public void doSomething() {
         String data = this.dependency.findSomeData();
-        System.out.println("find some data:"+data);
+        System.out.println("find some data:" + data);
         this.dependency2.insert(data);
         this.dependency2.insert(data);
     }
