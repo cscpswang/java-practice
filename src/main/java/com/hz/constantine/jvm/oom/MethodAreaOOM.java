@@ -1,4 +1,4 @@
-package com.xj.jvm.oom;
+package com.hz.constantine.jvm.oom;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;

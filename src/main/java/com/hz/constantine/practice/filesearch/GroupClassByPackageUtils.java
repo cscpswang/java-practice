@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2014-2017, NetEase, Inc. All Rights Reserved.
  */
-package com.xj.practice.filesearch;
+package com.hz.constantine.practice.filesearch;
 
 import java.io.File;
 import java.util.Arrays;

@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2014-2017, NetEase, Inc. All Rights Reserved.
  */
-package com.xj.jvm.gc;
+package com.hz.constantine.jvm.gc;
 
 import com.google.common.primitives.Bytes;
 

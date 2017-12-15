@@ -1,4 +1,4 @@
-package com.xj.jvm.gc;
+package com.hz.constantine.jvm.gc;
 
 /**
  * @author hzxianghaibo

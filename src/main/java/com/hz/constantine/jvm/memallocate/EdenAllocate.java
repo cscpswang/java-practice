@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2014-2017, NetEase, Inc. All Rights Reserved.
  */
-package com.xj.jvm.memallocate;
+package com.hz.constantine.jvm.memallocate;
 
 /**
  * @Description: (用一句话描述该文件做什么)

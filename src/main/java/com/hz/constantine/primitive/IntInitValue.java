@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2014-2017, NetEase, Inc. All Rights Reserved.
  */
-package com.xj.primitive;
+package com.hz.constantine.primitive;
 
 /**
  * @Description: (用一句话描述该文件做什么)
@@ -11,7 +11,7 @@ package com.xj.primitive;
  */
 public class IntInitValue {
 
-    private int i ;
+    private int i;
 
     public static void main(String[] args) {
         System.out.println(new IntInitValue().i);

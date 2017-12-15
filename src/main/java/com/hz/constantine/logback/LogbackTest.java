@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2014-2017, NetEase, Inc. All Rights Reserved.
  */
-package com.xj.logback;
+package com.hz.constantine.logback;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

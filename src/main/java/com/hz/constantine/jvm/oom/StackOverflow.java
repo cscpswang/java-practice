@@ -1,4 +1,4 @@
-package com.xj.jvm.oom;
+package com.hz.constantine.jvm.oom;
 
 /**
  * @author hzxianghaibo

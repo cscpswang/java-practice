@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2014-2017, NetEase, Inc. All Rights Reserved.
  */
-package com.xj.parallel;
+package com.hz.constantine.parallel;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -20,8 +20,7 @@ public class LockOnString {
         LockOnString instance = new LockOnString();
         for (int i = 0; i < 10; i++) {
             executor.execute(new Runnable() {
-                @Override
-                public void run() {
+                @Override public void run() {
                     for (int i = 0; i < 10; i++) {
                         try {
                             instance.printSomething();
