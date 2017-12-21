@@ -15,7 +15,6 @@ public class DynamicProxyTest {
 
     @Test
     public void dynamicProxyRecursive() {
-
     }
 
 }
