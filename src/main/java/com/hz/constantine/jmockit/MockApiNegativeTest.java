@@ -19,22 +19,22 @@ public class MockApiNegativeTest {
     @Tested
     ClassUnderTest testedUnit;
 
-    ClassUnderTest.Dependency mockDependency;
+    ClassUnderTest.Eye eye;
 
     @Injectable
-    ClassUnderTest.Dependency2 dependency2;
+    ClassUnderTest.Repository repository;
 
     @Test(expectedExceptions = NullPointerException.class)
     public void exerciseUnitInIsolationFromDependency() {
         final String data = "2";
         new Expectations() {
             {
-                mockDependency.findSomeData();
+                eye.find();
                 result = data;
-                dependency2.insert(data);
+                repository.insert(data);
             }
         };
 
-        testedUnit.doSomething();
+        testedUnit.action();
     }
 }

@@ -10,27 +10,45 @@ package com.hz.constantine.jmockit.dependency;
  * @version: V1.0.0
  */
 public final class ClassUnderTest {
-    private Dependency dependency;
+    public static final String FIND_TARGET = "paper";
+    public static final String DESC_MYSELF = "i'am constantine";
 
-    private Dependency2 dependency2;
+    private Eye eye;
 
-    public void doSomething() {
-        String data = this.dependency.findSomeData();
-        System.out.println("find some data:" + data);
-        this.dependency2.insert(data);
-        this.dependency2.insert(data);
+    private Repository repository;
+
+    public String action() {
+        StringBuilder footpoint = new StringBuilder(10);
+        footpoint.append(desc()).append(System.getProperty("line.separator"));
+        String data = this.eye.find();
+        footpoint.append("i'm find ").append(data).append(System.getProperty("line.separator"));
+        this.repository.insert(data);
+        footpoint.append("i'm insert ").append(data);
+        return footpoint.toString();
     }
 
-    public static class Dependency {
-        public String findSomeData() {
-            return "some";
+    private String desc(){
+        return DESC_MYSELF;
+    }
+
+    public static class Eye {
+        public String find() {
+            return FIND_TARGET;
         }
     }
 
-    public static class Dependency2 {
+    public static class Repository {
         public void insert(String target) {
             System.out.println(target + " has been inserted!!! ");
         }
+    }
+
+    public void setEye(Eye eye) {
+        this.eye = eye;
+    }
+
+    public void setRepository(Repository repository) {
+        this.repository = repository;
     }
 }
 

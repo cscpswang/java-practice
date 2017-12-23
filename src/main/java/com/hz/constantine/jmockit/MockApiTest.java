@@ -23,23 +23,23 @@ public class MockApiTest {
     ClassUnderTest testedUnit;
 
     @Injectable
-    ClassUnderTest.Dependency mockDependency;
+    ClassUnderTest.Eye eye;
 
     @Injectable
-    ClassUnderTest.Dependency2 dependency2;
+    ClassUnderTest.Repository repository;
 
     @Test
     public void exerciseUnitInIsolationFromDependency() {
         final String data = "2";
         new Expectations() {
             {
-                mockDependency.findSomeData();
+                eye.find();
                 result = data;
-                dependency2.insert(data);
+                repository.insert(data);
             }
         };
 
-        testedUnit.doSomething();
+        testedUnit.action();
     }
 
     @Test
@@ -47,19 +47,20 @@ public class MockApiTest {
         final String data = "2";
         new Expectations() {
             {
-                mockDependency.findSomeData();
+                eye.find();
                 result = data;
-                dependency2.insert(data);
+                repository.insert(data);
             }
         };
 
-        testedUnit.doSomething();
+        testedUnit.action();
 
         new Verifications(){
             {
-                mockDependency.findSomeData();
-                dependency2.insert(anyString);
+                eye.find();
+                repository.insert(anyString);
             }
         };
     }
+
 }
