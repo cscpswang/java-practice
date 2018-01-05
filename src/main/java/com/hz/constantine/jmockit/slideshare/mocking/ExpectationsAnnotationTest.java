@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2014-2018, NetEase, Inc. All Rights Reserved.
  */
-package com.hz.constantine.jmockit.slideshare.mocking.expectations;
+package com.hz.constantine.jmockit.slideshare.mocking;
 
 import com.hz.constantine.jmockit.dependency.ClassUnderTest;
 import mockit.Expectations;
@@ -18,7 +18,7 @@ import org.testng.annotations.Test;
  * @date: 2018/1/4 下午2:03
  * @version: V1.0.0
  */
-public class ExpectationsTest {
+public class ExpectationsAnnotationTest {
     @Tested
     ClassUnderTest classUnderTest;
 

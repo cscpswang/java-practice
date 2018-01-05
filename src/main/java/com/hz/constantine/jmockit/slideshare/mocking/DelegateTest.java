@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2014-2018, NetEase, Inc. All Rights Reserved.
  */
-package com.hz.constantine.jmockit.slideshare.mocking.expectations;
+package com.hz.constantine.jmockit.slideshare.mocking;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -12,7 +12,6 @@ import com.hz.constantine.jmockit.dependency.ClassUnderTest;
 
 import mockit.*;
 import mockit.internal.reflection.MethodReflection;
-
 
 /**
  * @Description: Delegate表达式
@@ -27,10 +26,10 @@ public class DelegateTest {
 
     @Test
     public void verifyMiddleResultWithFake(@Injectable ClassUnderTest.Repository repository) {
-        new MockUp<ClassUnderTest>(){
+        new MockUp<ClassUnderTest>() {
             @Mock
             @SuppressWarnings("unused")
-            private boolean isNorth(){
+            private boolean isNorth() {
                 return false;
             }
         };
@@ -40,14 +39,15 @@ public class DelegateTest {
 
         classUnderTest.saveIsSnow();
 
-        new Verifications(){
+        new Verifications() {
             {
-                repository.insert(with(new Delegate<String>(){
-                   @SuppressWarnings("unused")
-                    void delegate(String data){
-                       Assert.assertEquals(data,ClassUnderTest.IS_SNOW_NO);
-                   }
+                repository.insert(with(new Delegate<String>() {
+                    @SuppressWarnings("unused")
+                    void delegate(String data) {
+                        Assert.assertEquals(data, ClassUnderTest.IS_SNOW_NO);
+                    }
                 }));
+                times = 1;
             }
         };
     }
@@ -55,21 +55,21 @@ public class DelegateTest {
     @Test(expectedExceptions = AssertionError.class)
     public void verifyMiddleResultWithMocking(@Tested @Injectable ClassUnderTest.Repository repository)
             throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        new Expectations(){
+        new Expectations() {
             {
-                MethodReflection.invoke(classUnderTest,ClassUnderTest.class.getDeclaredMethod("isNorth"));
-                result=false;
+                MethodReflection.invoke(classUnderTest, ClassUnderTest.class.getDeclaredMethod("isNorth"));
+                result = false;
             }
         };
 
         classUnderTest.saveIsSnow();
 
-        new Verifications(){
+        new Verifications() {
             {
-                repository.insert(with(new Delegate<String>(){
+                repository.insert(with(new Delegate<String>() {
                     @SuppressWarnings("unused")
-                    void delegate(String data){
-                        Assert.assertEquals(data,ClassUnderTest.IS_SNOW_NO);
+                    void delegate(String data) {
+                        Assert.assertEquals(data, ClassUnderTest.IS_SNOW_NO);
                     }
                 }));
             }

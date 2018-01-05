@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2014-2018, NetEase, Inc. All Rights Reserved.
  */
-package com.hz.constantine.jmockit.slideshare.mocking.annotation;
+package com.hz.constantine.jmockit.slideshare.annotation;
 
 import com.hz.constantine.jmockit.dependency.ClassUnderTest;
 import mockit.*;

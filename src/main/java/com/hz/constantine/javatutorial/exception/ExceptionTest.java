@@ -3,10 +3,13 @@
  */
 package com.hz.constantine.javatutorial.exception;
 
-import org.testng.annotations.Test;
-
-import javax.management.RuntimeErrorException;
+import java.io.File;
 import java.io.IOException;
+import java.io.RandomAccessFile;
+
+import org.apache.commons.collections.functors.IdentityPredicate;
+import org.slf4j.LoggerFactory;
+import org.testng.annotations.Test;
 
 /**
  * @Description: (用一句话描述该文件做什么)
@@ -15,6 +18,21 @@ import java.io.IOException;
  * @version: V1.0.0
  */
 public class ExceptionTest {
+
+    public final class FileSearcher{
+
+        public void search()throws IllegalAccessException{
+            throw new IllegalAccessException("file not found");
+        }
+
+        public void action()throws Exception{
+            try{
+                search();
+            }catch (IllegalAccessException e){
+                throw new Exception(e);
+            }
+        }
+    }
 
 
     @Test
@@ -31,9 +49,39 @@ public class ExceptionTest {
     }
 
     @Test
-    public void tryresource(){
-        //TODO
+    public void chainedException(){
+        FileSearcher searcher = new FileSearcher();
+        try {
+            searcher.action();
+        }catch (Exception e){
+            org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
+            logger.error("",e);
+        }
     }
 
+    @Test
+    public void cat() {
+        RandomAccessFile input = null;
+        String line = null;
+
+        try {
+            File file = File.createTempFile("tmp", "tmp.txt");
+            input = new RandomAccessFile(file, "r");
+            while ((line = input.readLine()) != null) {
+                System.out.println(line);
+            }
+            return;
+        }catch(IOException e){
+            e.printStackTrace();
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                }catch (IOException e){
+
+                }
+            }
+        }
+    }
 
 }
