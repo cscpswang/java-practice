@@ -12,10 +12,6 @@ package com.hz.constantine.decompile;
 public class DecompileTest {
 
     public void decompile() {
-        String s = "";
-        for (int i = 0; i < 10; i++) {
-            s += i;
-        }
 
     }
 }

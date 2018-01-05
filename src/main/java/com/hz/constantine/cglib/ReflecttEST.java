@@ -1,11 +1,9 @@
 package com.hz.constantine.cglib;
 
-import net.sf.cglib.proxy.Enhancer;
-import net.sf.cglib.proxy.MethodInterceptor;
-import net.sf.cglib.proxy.MethodProxy;
-import org.testng.annotations.Test;
-
 import java.lang.reflect.Method;
+
+import net.sf.cglib.proxy.*;
+import org.testng.annotations.Test;
 
 /**
  * @author hzxianghaibo
@@ -16,26 +14,32 @@ public class ReflecttEST {
 
     @Test
     public void cglib() {
-        Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(Cat.class);
-        enhancer.setUseCache(false);
-        enhancer.setCallback(new MethodInterceptor() {
+        Cat proxy = (Cat) Enhancer.create(Cat.class, null, new CallbackFilter() {
             @Override
-            public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy)
-                    throws Throwable {
-                System.out.println(method.getName());
-                System.out.println("i'm eating");
-                Object result = methodProxy.invokeSuper(o, objects);
-                return result;
+            public int accept(Method method) {
+                if ("gender".equals(method.getName())) {
+                    return 0;
+                } else {
+                    return 1;
+                }
             }
-        });
-        Cat a = (Cat) enhancer.create();
-        a.action();
+        }, new Callback[] { new MethodInterceptor() {
+            @Override
+            public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
+                System.out.println(method.getName());
+                return "girl";
+            }
+        }, NoOp.INSTANCE });
+        proxy.action();
     }
 
     static class Cat {
         public void action() {
-            System.out.println("i'm running");
+            System.out.println("i'm running, i'm a " + gender());
+        }
+
+        private String gender() {
+            return "boy";
         }
 
     }

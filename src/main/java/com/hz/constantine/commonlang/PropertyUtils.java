@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * @Description: (用一句话描述该文件做什么)
@@ -28,6 +29,10 @@ public class PropertyUtils {
             this.name = name;
         }
 
+        private void eat() {
+            System.out.println("i'm eating");
+        }
+
     }
 
     @Test
@@ -40,6 +45,8 @@ public class PropertyUtils {
             field.setAccessible(true);
             Deencapsulation.setField(jimmyCopier, field.getName(), field.get(jimmy));
         }
+        Method eat = jimmy.getClass().getDeclaredMethod("eat");
+        eat.setAccessible(true);
 
         System.out.println(jimmyCopier.name);
     }
