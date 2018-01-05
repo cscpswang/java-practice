@@ -5,6 +5,7 @@ package com.hz.constantine.javatutorial.collection.algorithm;
 
 import com.google.common.collect.Lists;
 
+import java.util.Collection;
 import java.util.Collections;
 
 /**
