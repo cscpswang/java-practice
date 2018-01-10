@@ -36,7 +36,21 @@ public class FlexibleArgumentTest {
         };
     }
 
-    public void withMethods() {
+    @Test
+    public void withMethods(@Mocked ClassUnderTest.Repository repository) {
+        new Expectations() {
+            {
+                repository.insert(withAny(""));
+            }
+        };
 
+        repository.insert(null);
+
+        new Verifications() {
+            {
+                repository.insert(withNull());
+                times = 1;
+            }
+        };
     }
 }

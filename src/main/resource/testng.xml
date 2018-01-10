@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="My suite">
+    <test name="annotation">
+        <packages>
+            <package name="com.hz.constantine.jmockit.slideshare.annotation"/>
+        </packages>
+    </test>
+
+    <test name="mocking">
+        <packages>
+            <package name="com.hz.constantine.jmockit.slideshare.mocking"/>
+        </packages>
+    </test>
+</suite>

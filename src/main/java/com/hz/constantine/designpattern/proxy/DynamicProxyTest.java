@@ -37,7 +37,7 @@ public class DynamicProxyTest {
 
     @Test
     public void dynamicProxyJdk() {
-class Proxier implements InvocationHandler {
+        class Proxier implements InvocationHandler {
             private Object target;
 
             public Proxier(Object target) {

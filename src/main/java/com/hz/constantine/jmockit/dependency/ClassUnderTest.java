@@ -42,6 +42,8 @@ public class ClassUnderTest {
 
     private Name name;
 
+    private Alias alias;
+
     public ClassUnderTest(){
         this.name = new Name();
     }
@@ -124,6 +126,17 @@ public class ClassUnderTest {
         }
     }
 
+    public static class Alias {
+        public String alias;
+
+        public Alias(String alias){this.alias = alias;}
+
+        @Override
+        public String toString() {
+            return this.alias;
+        }
+    }
+
     public static String eat(){
         return EATING;
     }
@@ -150,5 +163,9 @@ public class ClassUnderTest {
 
     public Repository getRepository() {
         return repository;
+    }
+
+    public Alias getAlias() {
+        return alias;
     }
 }

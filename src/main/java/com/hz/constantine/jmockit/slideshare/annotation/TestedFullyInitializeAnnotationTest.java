@@ -29,7 +29,7 @@ public class TestedFullyInitializeAnnotationTest {
     * 由于testedUnitFullyInitial的name属性构造函数不是默认的，需要注入.
     */
     @Injectable
-    String name = "testName";
+    String alias = "testAlias";
 
     @Test
     public void tested() {
@@ -38,7 +38,7 @@ public class TestedFullyInitializeAnnotationTest {
         Assert.assertTrue(testedUnitFullyInitial.getName() instanceof ClassUnderTest.Name);
         Assert.assertTrue(testedUnitFullyInitial.getRepository() instanceof ClassUnderTest.Repository);
 
-        Assert.assertEquals(testedUnitFullyInitial.getName().toString(), name);
+        Assert.assertEquals(testedUnitFullyInitial.getAlias().toString(), alias);
     }
 
     @Test
@@ -46,7 +46,7 @@ public class TestedFullyInitializeAnnotationTest {
         ClassUnderTest classUnderTest = new ClassUnderTest();
         classUnderTest.setRepository(new ClassUnderTest.Repository());
         classUnderTest.setEye(new ClassUnderTest.Eye());
-        classUnderTest.setName(new ClassUnderTest.Name(name));
+        classUnderTest.setName(new ClassUnderTest.Name());
         String expectResult = classUnderTest.action();
 
         String result = testedUnitFullyInitial.action();
