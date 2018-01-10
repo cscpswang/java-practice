@@ -29,6 +29,9 @@ public class CasCadeMockTest {
     @Injectable
     ClassUnderTest.Repository repositoryInjectInstance;
 
+    /**
+    * 被mock对象的依赖也被级联mock
+    */
     @Test
     public void cascadeMockTest() {
         ClassUnderTest classUnderTest1 = new ClassUnderTest();

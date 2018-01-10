@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2014-2017, NetEase, Inc. All Rights Reserved.
  */
-package com.hz.constantine.jmockit;
+package com.hz.constantine.jmockit.slideshare.faking;
 
 import mockit.Deencapsulation;
 import mockit.Injectable;
@@ -11,12 +11,12 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
- * @Description: (用一句话描述该文件做什么)
+ * @Description: faking, state-oriented
  * @author: xiangji
  * @date: 2017/12/8 上午11:46
  * @version: V1.0.0
  */
-public class FakeTest {
+public class FakeSimpleTest {
     class EchoServer {
         private Dependency dependency=new Dependency();
 
@@ -24,15 +24,14 @@ public class FakeTest {
             return msg;
         }
 
-        public void run(){
-            dependency.run();
-            System.out.println("echo server run");
+        public String run(){
+           return dependency.run();
         }
     }
 
     class Dependency {
-        public void run(){
-            System.out.println("dependency run");
+        public String run(){
+            return "dependency run";
         }
     }
 
@@ -50,22 +49,26 @@ public class FakeTest {
         new EchoServerMock();
 
         String reply = new EchoServer().echo(msg);
+
         Assert.assertEquals(reply,mockPrfeix+msg);
     }
 
     @Test
     public void applyFakesWithDependency(){
+        final String msg = "i'm constantine";
         EchoServer echoServer = new EchoServer();
 
         final class DependencyMock extends MockUp<Dependency> {
             @Mock
-            public void run(){
-                System.out.println("after by mock Dependency");
+            public String run(){
+                return msg;
             }
         }
         new DependencyMock();
 
-        echoServer.run();
+        String actualMsg =  echoServer.run();
+
+        Assert.assertEquals(actualMsg,msg);
     }
 
 }

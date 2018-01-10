@@ -1,15 +1,21 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="My suite">
-    <test name="annotation">
-        <packages>
-            <package name="com.hz.constantine.jmockit.slideshare.annotation"/>
-        </packages>
-    </test>
-
+<suite name="My suite" thread-count="10" parallel="classes">
     <test name="mocking">
         <packages>
             <package name="com.hz.constantine.jmockit.slideshare.mocking"/>
+        </packages>
+    </test>
+
+    <test name="faking">
+        <packages>
+            <package name="com.hz.constantine.jmockit.slideshare.faking"/>
+        </packages>
+    </test>
+
+    <test name="testng">
+        <packages>
+            <package name="com.hz.constantine.jmockit.slideshare.testng"/>
         </packages>
     </test>
 </suite>

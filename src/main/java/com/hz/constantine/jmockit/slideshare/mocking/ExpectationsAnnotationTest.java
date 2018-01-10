@@ -55,6 +55,7 @@ public class ExpectationsAnnotationTest {
                 result = nameStr;
                 eye.find();
                 result = data;
+                //unCorrectParam
                 repository.insert(String.valueOf(RandomUtils.nextInt(1000, 2000)));
             }
         };
@@ -84,6 +85,7 @@ public class ExpectationsAnnotationTest {
                 eye.find();
                 result = data;
                 repository.insert(data);
+                //actually only 1.
                 times = 2;
             }
         };

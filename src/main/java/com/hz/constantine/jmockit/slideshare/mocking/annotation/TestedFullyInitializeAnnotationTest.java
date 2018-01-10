@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2014-2018, NetEase, Inc. All Rights Reserved.
  */
-package com.hz.constantine.jmockit.slideshare.annotation;
+package com.hz.constantine.jmockit.slideshare.mocking.annotation;
 
 import mockit.Injectable;
 import org.testng.Assert;
@@ -31,6 +31,9 @@ public class TestedFullyInitializeAnnotationTest {
     @Injectable
     String alias = "testAlias";
 
+    /**
+     * 初始化了自己和成员变量
+     */
     @Test
     public void tested() {
         Assert.assertTrue(testedUnitFullyInitial instanceof ClassUnderTest);
@@ -41,6 +44,9 @@ public class TestedFullyInitializeAnnotationTest {
         Assert.assertEquals(testedUnitFullyInitial.getAlias().toString(), alias);
     }
 
+    /**
+    * 示例的初始化并没有完全托管给jmockit,依然安装类本身定义的方式来初始化.
+    */
     @Test
     public void testedAction() {
         ClassUnderTest classUnderTest = new ClassUnderTest();
@@ -54,11 +60,17 @@ public class TestedFullyInitializeAnnotationTest {
         Assert.assertEquals(expectResult,result);
     }
 
+    /**
+     * 没有影响到其他实例,其他实例正确的返回了值
+     */
     @Test
     public void newInstance() {
         Assert.assertEquals(new ClassUnderTest().eat(),ClassUnderTest.EATING);
     }
 
+    /**
+     * 没有影响到静态方法,返回了正确值
+     */
     @Test
     public void staticMethod() {
         Assert.assertEquals(ClassUnderTest.eat(),ClassUnderTest.EATING);

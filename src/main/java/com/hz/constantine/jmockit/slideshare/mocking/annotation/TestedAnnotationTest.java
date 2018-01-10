@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2014-2018, NetEase, Inc. All Rights Reserved.
  */
-package com.hz.constantine.jmockit.slideshare.annotation;
+package com.hz.constantine.jmockit.slideshare.mocking.annotation;
 
 import com.hz.constantine.jmockit.dependency.ClassUnderTest;
 import mockit.*;
@@ -24,6 +24,9 @@ public class TestedAnnotationTest {
     @Tested
     ClassUnderTest testedUnit;
 
+    /**
+     * 只初始化了自己,成员变量并没有初始化
+     */
     @Test
     public void tested() {
         Assert.assertTrue(testedUnit instanceof ClassUnderTest);
@@ -31,21 +34,33 @@ public class TestedAnnotationTest {
         Assert.assertNull(testedUnit.getRepository());
     }
 
+    /**
+     * 实例的初始化并未完全托管给jmockit，调用类定义中的构造方法，所以name为正确值
+     */
     @Test
     public void construct(){
         Assert.assertEquals(testedUnit.getName().name,DEFAULT_NAME);
     }
 
+    /**
+    * 因为成员变量没有初始化，抛出NPE
+    */
     @Test(expectedExceptions = NullPointerException.class)
     public void testedAction() {
         testedUnit.action();
     }
 
+    /**
+     * 没有影响到其他实例,其他实例正确的返回了值
+     */
     @Test
     public void newInstance() {
         Assert.assertEquals(new ClassUnderTest().eat(),ClassUnderTest.EATING);
     }
 
+    /**
+     * 没有影响到静态方法,返回了正确值
+     */
     @Test
     public void staticMethod() {
         Assert.assertEquals(ClassUnderTest.eat(),ClassUnderTest.EATING);

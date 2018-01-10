@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * @Description: (用一句话描述该文件做什么)
+ * @Description: returns(...), result= 两种语法来支持记录结果，并且支持记录多次
  * @author: xiangji
  * @date: 2018/1/5 上午9:55
  * @version: V1.0.0

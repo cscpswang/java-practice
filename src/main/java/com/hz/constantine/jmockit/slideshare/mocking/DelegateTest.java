@@ -14,7 +14,9 @@ import mockit.*;
 import mockit.internal.reflection.MethodReflection;
 
 /**
- * @Description: Delegate表达式
+ * @Description: Delegate表达式<br/>
+ *               1.用在参数中<br/>
+ *               2.用在result=表达式中
  * @author: xiangji
  * @date: 2018/1/4 下午5:14
  * @version: V1.0.0
