@@ -6,9 +6,11 @@ package com.hz.constantine.practice;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @Description: (用一句话描述该文件做什么)
@@ -17,55 +19,110 @@ import java.util.List;
  * @version: V1.0.0
  */
 public class LeetCode {
-    public int reverse(int num) {
-        if (num == -Math.pow(2, 31)) {
+    public int myAtoi(String str) {
+        str = str.trim();
+        int defaultResult = 0;
+
+        /** only white space.  **/
+        char[] chars = str.toCharArray();
+        if (chars.length < 1) {
+            return defaultResult;
+        }
+
+        List<Character> numberStr = Arrays.asList('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+        List<Character> signStr = Arrays.asList('-','+');
+        int minLimit = new Double(-Math.pow(2, 31)).intValue();
+        int maxLimit = new Double(Math.pow(2, 31) - 1).intValue();
+
+        int startIndex = -1;
+        int endIndex = 0;
+        int minusSignCount = 0;
+        boolean startNumberFlag = false;
+        for (int i = 0; i < chars.length; i++, endIndex++) {
+            if(!startNumberFlag){
+                if(chars[i] == '-'){
+                    minusSignCount ++;
+                }
+
+                if(numberStr.contains(chars[i])){
+                    startNumberFlag = true;
+                    startIndex = i;
+                }
+
+                if(!numberStr.contains(chars[i])&&!signStr.contains(chars[i])){
+                    return 0;
+                }
+            }else {
+                if(!numberStr.contains(chars[i])){
+                    break;
+                }
+            }
+        }
+
+        if(startIndex == -1){
             return 0;
         }
 
-        // get signed
-        String firstPad = "";
-        if (num < 0) {
-            firstPad = "-";
-        }
-
-        // reverse the num.
-        char[] chars = String.valueOf(Math.abs(num)).toCharArray();
-        char[] reverseChars = new char[chars.length];
-        for (int i = 0; i < chars.length; i++) {
-            reverseChars[chars.length - i - 1] = chars[i];
-        }
-        String resultStr = firstPad + new String(reverseChars);
-
-        // make it not over flow.
-        double result = Double.valueOf(resultStr);
-        if (result >= Math.pow(2, 31) || result < -Math.pow(2, 31)) {
+        char[] resultChars = new char[endIndex-startIndex];
+        System.arraycopy(chars, startIndex, resultChars, 0, resultChars.length);
+        String resultStr = new String(resultChars);
+        Long result;
+        try {
+            result = minusSignCount%2==0 ? Long.parseLong(resultStr) : -Long.parseLong(resultStr);
+        }catch (NumberFormatException e){
             return 0;
         }
-        return Double.valueOf(result).intValue();
+        if (result < minLimit) {
+            return minLimit;
+        }
+        if (result > maxLimit) {
+            return maxLimit;
+        }
+        return result.intValue();
     }
 
     @Test
-    public void reverse() {
-        Assert.assertEquals(new LeetCode().reverse(123), 321);
+    public void myAtoi1() {
+        Assert.assertEquals(myAtoi("42"), 42);
     }
 
     @Test
-    public void reverse1() {
-        Assert.assertEquals(new LeetCode().reverse(-123), -321);
+    public void myAtoi2() {
+        Assert.assertEquals(myAtoi("   -42"), -42);
     }
 
     @Test
-    public void reverse2() {
-        Assert.assertEquals(new LeetCode().reverse(120), 21);
+    public void myAtoi3() {
+        Assert.assertEquals(myAtoi("csddfds"), 0);
     }
 
     @Test
-    public void reverseOverflow() {
-        Assert.assertEquals(new LeetCode().reverse(Double.valueOf(Math.pow(2, 31)).intValue()), 0);
+    public void myAtoi4() {
+        Assert.assertEquals(myAtoi("4213 words"), 4213);
     }
 
     @Test
-    public void reverse3() {
-        Assert.assertEquals(new LeetCode().reverse(-2147483648), 0);
+    public void myAtoi5() {
+        Assert.assertEquals(myAtoi("-91283472332"), -2147483648);
+    }
+
+    @Test
+    public void myAtoi6() {
+        Assert.assertEquals(myAtoi("+1"), 1);
+    }
+
+    @Test
+    public void myAtoi7() {
+        Assert.assertEquals(myAtoi("+"), 0);
+    }
+
+    @Test
+    public void myAtoi8() {
+        Assert.assertEquals(myAtoi("  0000000000012345678"), 12345678);
+    }
+
+    @Test
+    public void myAtoi9() {
+        Assert.assertEquals(myAtoi("-+1"), -1);
     }
 }

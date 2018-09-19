@@ -26,6 +26,8 @@ public class CopyOnWriteList {
         list.add(var1);
         CopyOnWriteList s2 = list.get(0);
 
+        System.out.println(s1.toString());
+        System.out.println(s2.toString());
         Assert.assertFalse(s1 == s2);
 
     }

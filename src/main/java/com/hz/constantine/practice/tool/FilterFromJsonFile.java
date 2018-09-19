@@ -22,7 +22,7 @@ import java.util.stream.Stream;
 public class FilterFromJsonFile {
 
     private String getJsonString() throws IOException {
-        return new String(Files.readAllBytes(Paths.get("/Users/xiangji/Downloads", "t")), "utf-8");
+        return new String(Files.readAllBytes(Paths.get("/Users/xiangji/Downloads", "t.out")), "utf-8");
     }
 
     public void deal() throws IOException {
