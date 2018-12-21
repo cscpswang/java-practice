@@ -66,4 +66,11 @@ public class Lru {
         Assert.assertNull(lru.get("5"));
     }
 
+    public static void main(String[] args) throws InterruptedException {
+        for (int i =1;i<100000;i++) {
+            System.out.println("项毅洋");
+            Thread.sleep(10);
+        }
+    }
+
 }

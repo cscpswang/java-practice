@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2014-2018, NetEase, Inc. All Rights Reserved.
  */
-package com.hz.constantine.algorithm;
+package com.hz.constantine.algorithm.sort;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
