@@ -16,22 +16,6 @@ import java.math.BigDecimal;
  */
 public class SimilarityOfString {
 
-    public int shortestDistanceWithRecursion(char[] a, char[] b, int aLen, int bLen) {
-        if (0 == aLen) {
-            return bLen;
-        }
-        if (0 == bLen) {
-            return aLen;
-        }
-        if (a[aLen - 1] == b[bLen - 1]) {
-            return shortestDistanceWithRecursion(a, b, aLen - 1, bLen - 1);
-        }
-        int aSubtract = shortestDistanceWithRecursion(a, b, aLen - 1, bLen) + 1;
-        int bSubtract = shortestDistanceWithRecursion(a, b, aLen, bLen - 1) + 1;
-        int aBSubtract = shortestDistanceWithRecursion(a, b, aLen - 1, bLen - 1) + 1;
-        return Math.min(Math.min(aSubtract, bSubtract), aBSubtract);
-    }
-
     public int shortestDistanceWithDynamicPlan(String a, String b) {
         int aLen = a.length();
         int bLen = b.length();
@@ -63,31 +47,11 @@ public class SimilarityOfString {
         return shortDistance[aLen - 1][bLen - 1];
     }
 
-    public BigDecimal similarityWithRecursion(String str1, String str2) {
-        int ld = shortestDistanceWithRecursion(str1.toCharArray(), str2.toCharArray(), str1.length(), str2.length());
-        // formula is: (1 - ld / max(str1.length(), str2.length()))
-        return BigDecimal.ONE
-                .subtract(BigDecimal.valueOf(ld).divide(BigDecimal.valueOf(Math.max(str1.length(), str2.length()))));
-    }
-
     public BigDecimal similarityWithDynamicPlan(String str1, String str2) {
         int ld = shortestDistanceWithDynamicPlan(str1, str2);
         // formula is: (1 - ld / max(str1.length(), str2.length()))
         return BigDecimal.ONE
                 .subtract(BigDecimal.valueOf(ld).divide(BigDecimal.valueOf(Math.max(str1.length(), str2.length()))));
-    }
-
-    @Test
-    public void similarityWithRecursion() {
-        Assert.assertEquals(similarityWithRecursion("E123442342", "E123442342").doubleValue(), 1.0);
-        Assert.assertEquals(similarityWithRecursion("E123442342", "E123442340").doubleValue(), 0.9);
-        Assert.assertEquals(similarityWithRecursion("E123442342", "E12344234").doubleValue(), 0.9);
-        Assert.assertEquals(similarityWithRecursion("E123442342", "E123442300").doubleValue(), 0.8);
-        Assert.assertEquals(similarityWithRecursion("E123442342", "E1234423").doubleValue(), 0.8);
-        Assert.assertEquals(similarityWithRecursion("E123442342", "123").doubleValue(), 0.3);
-        Assert.assertEquals(similarityWithRecursion("E123442342", "342").doubleValue(), 0.3);
-        Assert.assertEquals(similarityWithRecursion("E123442342", "").doubleValue(), 0.0);
-        Assert.assertEquals(similarityWithRecursion("", "E123442342").doubleValue(), 0.0);
     }
 
     @Test
