@@ -49,7 +49,7 @@ public class RoutingDataManipulation {
     }
 
     public static void main(String[] args) {
-        addAll();
+        copy();
     }
 
 }

@@ -6,6 +6,8 @@ package com.hz.constantine.algorithm;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -67,10 +69,7 @@ public class Lru {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        for (int i =1;i<100000;i++) {
-            System.out.println("项毅洋");
-            Thread.sleep(10);
-        }
+        System.out.println(new Timestamp(10000).toString());
     }
 
 }

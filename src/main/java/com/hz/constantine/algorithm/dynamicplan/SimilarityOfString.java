@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  * @Description: 字符串相似度算法
@@ -51,7 +52,8 @@ public class SimilarityOfString {
         int ld = shortestDistanceWithDynamicPlan(str1, str2);
         // formula is: (1 - ld / max(str1.length(), str2.length()))
         return BigDecimal.ONE
-                .subtract(BigDecimal.valueOf(ld).divide(BigDecimal.valueOf(Math.max(str1.length(), str2.length()))));
+                .subtract(BigDecimal.valueOf(ld).divide(BigDecimal.valueOf(Math.max(str1.length(), str2.length())),2,
+                        RoundingMode.HALF_UP));
     }
 
     @Test
@@ -65,6 +67,19 @@ public class SimilarityOfString {
         Assert.assertEquals(similarityWithDynamicPlan("E123442342", "342").doubleValue(), 0.3);
         Assert.assertEquals(similarityWithDynamicPlan("E123442342", "").doubleValue(), 0.0);
         Assert.assertEquals(similarityWithDynamicPlan("", "E123442342").doubleValue(), 0.0);
+    }
+
+    @Test
+    public void test(){
+        String main = "onWHiTE出七外五位为您洛感up!3%30一名世茶用美白美容液之A1T9片匕产品细节包装一盒30片装，使用时间更长3S材质面膜纸选用长纤维无纺布材质，一片富含充足精华使用说明在洁面和水乳后，取出面膜敷在脸上，10-15分钟后取下，用温水洗净即可";
+        String pattern = "使用方法";
+        System.out.println(main.length());
+        System.out.println(similarityWithDynamicPlan(main,"使用时间"));
+        System.out.println(similarityWithDynamicPlan(main,"使用"));
+        System.out.println(similarityWithDynamicPlan(main,"时间"));
+        System.out.println(similarityWithDynamicPlan(main,"用时"));
+        System.out.println(similarityWithDynamicPlan(main,"使用时"));
+        System.out.println(similarityWithDynamicPlan(main,"使用xx时间"));
     }
 
 }
