@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.testng.annotations.Test;
 
@@ -22,7 +23,7 @@ public class Factory4DDD {
     private Factory factory;
 
     @Component
-    class Factory {
+    static class Factory {
         @Autowired
         private Repository repository;
 
@@ -32,11 +33,11 @@ public class Factory4DDD {
     }
 
     @Component
-    class Repository {
+    static class Repository {
 
     }
 
-    class Cat {
+    static class Cat {
         private Repository repository;
 
         public Cat(Repository repository) {
@@ -46,12 +47,8 @@ public class Factory4DDD {
 
     @Test
     public void test() {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Starter.class);
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(BeanConfig.class);
         applicationContext.getBean(Factory.class).createObj();
     }
 }
 
-@EnableAutoConfiguration
-class Starter {
-
-}

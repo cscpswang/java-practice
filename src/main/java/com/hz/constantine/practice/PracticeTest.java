@@ -8,13 +8,12 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
-import com.google.common.base.Joiner;
-import com.sun.istack.internal.NotNull;
+import javax.validation.constraints.NotNull;
+
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import sun.jvm.hotspot.tools.StackTrace;
 
 /**
  * @Description: (用一句话描述该文件做什么)

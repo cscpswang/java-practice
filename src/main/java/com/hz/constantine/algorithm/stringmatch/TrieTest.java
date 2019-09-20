@@ -96,7 +96,7 @@ public class TrieTest {
         TrieTreeNode[] children = trieTreeNode.children;
 
         for (TrieTreeNode node : children) {
-            if(null == node){
+            if (null == node) {
                 continue;
             }
             if (node.isEndOfString) {
@@ -105,9 +105,44 @@ public class TrieTest {
             // 退出条件: 当前节点是叶子节点
             if (node.isLeaf) {
                 continue;
-            }else {
+            } else {
                 result.addAll(recursiveSearch(prefix + node.data, node));
             }
+        }
+        return result;
+    }
+
+    /**
+     * 搜索所有命中的敏感词
+     * 
+     * @param root 敏感词组成的Trie 树
+     * @param mainStr 主串
+     * @return 命中的敏感词
+     */
+    private List<String> searchAllHitSensitive(TrieTreeNode root, String mainStr) {
+        List<String> result = Lists.newArrayList();
+        char[] chars = mainStr.toCharArray();
+
+        for (int i = 0; i < chars.length; i++) {
+            char currentChar = chars[i];
+            TrieTreeNode currentNode = root.children[currentChar - 'a'];
+            if (null == currentNode) {
+                continue;
+            }
+
+            for (int j = i; j < chars.length; j++) {
+                if (null == currentNode) {
+                    break;
+                }
+                if (0 != j && currentNode.isEndOfString) {
+                    result.add(String.valueOf(chars, i, j - i+1));
+                }
+                if (j + 1 < chars.length) {
+                    currentChar = chars[j + 1];
+                    currentNode = currentNode.children[currentChar - 'a'];
+                }
+            }
+
         }
         return result;
     }
@@ -130,17 +165,30 @@ public class TrieTest {
     }
 
     @Test
-    public void test(){
+    public void test() {
         TrieTest trieTest = new TrieTest();
-        trieTest.insertString(root,"her");
-        trieTest.insertString(root,"he");
-        trieTest.insertString(root,"hi");
-        trieTest.insertString(root,"hello");
-        trieTest.insertString(root,"hit");
-        trieTest.insertString(root,"st");
-        trieTest.insertString(root,"swr");
+        trieTest.insertString(root, "her");
+        trieTest.insertString(root, "he");
+        trieTest.insertString(root, "hi");
+        trieTest.insertString(root, "hello");
+        trieTest.insertString(root, "hit");
+        trieTest.insertString(root, "st");
+        trieTest.insertString(root, "swr");
 
-        Assert.assertEqualsNoOrder(trieTest.searchAllMatchPrefix(root,"he").toArray(),new String[]{"her","he","hello"});
+        Assert.assertEqualsNoOrder(trieTest.searchAllMatchPrefix(root, "he").toArray(),
+                new String[] { "her", "he", "hello" });
+    }
+
+    @Test
+    public void testSensitiveWord() {
+        TrieTest trieTest = new TrieTest();
+        trieTest.insertString(root, "her");
+        trieTest.insertString(root, "he");
+        trieTest.insertString(root, "hi");
+        trieTest.insertString(root, "hello");
+
+        Assert.assertEqualsNoOrder(trieTest.searchAllHitSensitive(root, "ihello").toArray(),
+                new String[] { "he", "hello" });
     }
 
 }

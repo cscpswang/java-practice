@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.testng.annotations.Test;
 
 /**
@@ -16,7 +17,7 @@ import org.testng.annotations.Test;
  * @date: 2018/8/21 下午3:14
  * @version: V1.0.0
  */
-public class BeanFactory implements FactoryBean<Cat> {
+public class BeanFactory implements FactoryBean<BeanFactory.Cat> {
 
     @Override
     public Cat getObject() {
@@ -26,6 +27,15 @@ public class BeanFactory implements FactoryBean<Cat> {
     @Override
     public Class<?> getObjectType() {
         return null;
+    }
+
+    @Bean("beanFactory")
+    public BeanFactory beanFactory() {
+        return new BeanFactory();
+    }
+
+    public static class Cat {
+
     }
 
     @Test
@@ -39,16 +49,4 @@ public class BeanFactory implements FactoryBean<Cat> {
         System.out.println(applicationContext.getBean("beanFactory"));
 
     }
-}
-
-@Configuration
-class BeanConfig {
-    @Bean
-    public BeanFactory beanFactory() {
-        return new BeanFactory();
-    }
-}
-
-class Cat {
-
 }
