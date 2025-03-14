@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>完整待产清单：从待产必备到产后修复全攻略</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            background: linear-gradient(135deg, #f8bbd0, #bbdefb);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 2.2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8rem;
+            color: #e91e63;
+            margin: 25px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e91e63;
+        }
+        h3 {
+            font-size: 1.4rem;
+            color: #3f51b5;
+            margin: 20px 0 10px;
+        }
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+        .intro {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        .checklist {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        .product-info {
+            padding: 15px;
+        }
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .product-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .product-price {
+            font-weight: bold;
+            color: #e91e63;
+        }
+        .product-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #3f51b5;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .product-link:hover {
+            background-color: #303f9f;
+        }
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .tip-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .warning-box {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .category-icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .tab-container {
+            margin: 20px 0;
+        }
+        .tab-buttons {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+        .tab-button {
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+        .tab-button.active {
+            background-color: #e91e63;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 0 0 8px 8px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .tab-button {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #e91e63;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background-color: white;
+            border: 4px solid #e91e63;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #fff;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #fff;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+        .right::after {
+            left: -13px;
+        }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        @media screen and (max-width: 600px) {
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-container::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            .left::after, .right::after {
+                left: 18px;
+            }
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>完整待产清单：从待产必备到产后修复全攻略</h1>
+            <p>为迎接新生命的到来做好充分准备，科学规划产后修复之路</p>
+        </header>
+
+        <section class="intro">
+            <p>恭喜你即将迎来人生中最美好的时刻！准备一个全面的待产包不仅能让分娩过程更顺利，也能为产后恢复打下良好基础。本指南将为你提供从待产必备到产后修复的完整清单，帮助你从容应对分娩和产后恢复期。</p>
+        </section>
+
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-button active" onclick="openTab(event, 'mom-items')">妈妈用品</button>
+                <button class="tab-button" onclick="openTab(event, 'baby-items')">宝宝用品</button>
+                <button class="tab-button" onclick="openTab(event, 'recovery-items')">产后修复</button>
+                <button class="tab-button" onclick="openTab(event, 'documents')">证件与其他</button>
+            </div>
+
+            <div id="mom-items" class="tab-content active">
+                <h3>产房必备</h3>
+                <ul>
+                    <li><strong>产褥垫</strong>：顺产2包，剖腹产1包（每包10片），推荐大尺寸60×90cm</li>
+                    <li><strong>一次性内裤</strong>：约10-15条，产后恶露多，用完即扔很方便</li>
+                    <li><strong>吸管杯/弯头吸管</strong>：方便躺着喝水，尤其是剖腹产妈妈</li>
+                    <li><strong>毛巾</strong>：2-3条，用于擦身体和擦脚</li>
+                    <li><strong>湿巾/棉柔巾</strong>：1-2包，多用途清洁用</li>
+                    <li><strong>一次性马桶垫</strong>：多人间准备20张左右，单间可少准备</li>
+                </ul>
+
+                <h3>个人护理用品</h3>
+                <ul>
+                    <li><strong>前开式睡衣/月子服</strong>：2-4套，选择纯棉材质、宽松舒适的款式</li>
+                    <li><strong>哺乳内衣</strong>：3-4件，选择前开扣、无钢圈、纯棉材质</li>
+                    <li><strong>防溢乳垫</strong>：1小包，根据奶量再补充</li>
+                    <li><strong>产妇卫生巾</strong>：计量卫生巾1包、安心裤3-4包、夜用和日用各1-2包</li>
+                    <li><strong>洗漱用品</strong>：牙刷、牙膏、洗面奶、毛巾等</li>
+                    <li><strong>拖鞋</strong>：1双，选择防滑、包脚的款式</li>
+                    <li><strong>袜子</strong>：2-3双，保暖防寒</li>
+                </ul>
+
+                <h3>哺乳用品</h3>
+                <ul>
+                    <li><strong>电动吸奶器</strong>：1个，推荐双边电动款，省时省力</li>
+                    <li><strong>储奶袋</strong>：视情况准备，一般吸奶器会送一些</li>
+                    <li><strong>乳头霜</strong>：1瓶，预防乳头皲裂</li>
+                </ul>
+
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.alicdn.com/img/bao/uploaded/i4/i4/2259702327/O1CN01UZ8Wnx1T3ogWJ2aE7_!!2259702327.jpg" alt="嫚熙四季款待产包">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">嫚熙四季款待产包</div>
+                            <div class="product-description">含母乳储存袋、防溢乳垫、月子头巾发带等51件套</div>
+                            <div class="product-price">¥409.90</div>
+                            <a href="https://detail.tmall.com/item.htm?id=674880639790" class="product-link" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.alicdn.com/img/bao/uploaded/i4/i3/2275046294/O1CN01U2phRM1wMhsV0lt7e_!!2275046294.png" alt="bc babycare四季待产包">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">bc babycare四季待产包</div>
+                            <div class="product-description">待产包入院全套，孕产妇专用，月子中心推荐</div>
+                            <div class="product-price">¥409.00</div>
+                            <a href="https://detail.tmall.com/item.htm?id=625392329517" class="product-link" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.alicdn.com/img/bao/uploaded/i4/i4/430490406/O1CN01CebdO31ErzqGQUDFb_!!430490406.jpg" alt="全棉时代待产包">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">全棉时代待产包</div>
+                            <div class="product-description">纯棉材质，抗菌除螨，柔软贴身，待产专用</div>
+                            <div class="product-price">¥279.00</div><a href="https://detail.tmall.com/item.htm?id=656851315481" class="product-link" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="baby-items" class="tab-content">
+                <h3>衣物</h3>
+                <ul>
+                    <li><strong>和尚服/连体衣</strong>：59码3-4件，选择纯棉A类无骨刺绣的</li>
+                    <li><strong>胎帽</strong>：1-2个，保护新生儿卤门</li>
+                    <li><strong>袜子</strong>：3-4双，选纯棉无骨的，注意不能有线头</li>
+                    <li><strong>手套</strong>：2对（非必需，有些专家不建议使用）</li>
+                </ul>
+
+                <h3>尿布用品</h3>
+                <ul>
+                    <li><strong>纸尿裤</strong>：2包NB码，不要囤太多，后续根据宝宝体重购买</li>
+                    <li><strong>隔尿垫</strong>：一次性隔尿垫1-2包，可水洗隔尿垫3-4条</li>
+                </ul>
+
+                <h3>洗护用品</h3>
+                <ul>
+                    <li><strong>纱布浴巾</strong>：薄厚各2条，可当襁褓、抱被、盖毯等多用途使用</li>
+                    <li><strong>小方巾</strong>：4-5条，选6层的30×30cm，用于洗脸、拍嗝、擦屁屁等</li>
+                    <li><strong>洗护套装</strong>：面霜1瓶、身体乳1瓶、洗护二合一1瓶</li>
+                    <li><strong>碘伏棉签</strong>：1盒，清理肚脐用</li>
+                    <li><strong>婴儿指甲剪</strong>：1把，宝宝指甲长得快，防止抓伤自己</li>
+                </ul>
+
+                <h3>喂养用品</h3>
+                <ul>
+                    <li><strong>奶粉</strong>：1小罐，前2天可能需要补充</li>
+                    <li><strong>奶瓶</strong>：1个150ml和1个240ml的，选择玻璃或PPSU材质</li>
+                    <li><strong>硅胶软勺</strong>：1个，用于喂奶粉或辅食</li>
+                </ul>
+
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.alicdn.com/img/bao/uploaded/i4/i4/2922903701/O1CN01538iyP1dD6pCPyCkG_!!0-item_pic.jpg" alt="礼盒装新生儿婴儿礼盒">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">礼盒装新生儿婴儿礼盒</div>
+                            <div class="product-description">好看且实用，安抚实力派，可高温水煮，放心啃咬无异味</div>
+                            <div class="product-price">¥198.00</div><a href="https://detail.tmall.com/item.htm?id=805283726809" class="product-link" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.alicdn.com/img/bao/uploaded/i4/i1/858103669/O1CN01R7HQMF1cySB87NiDd_!!858103669.jpg" alt="彩象湾中国风婴儿礼盒">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">彩象湾中国风婴儿礼盒</div>
+                            <div class="product-description">A类纯棉材质，无骨缝制工艺，螺纹袖口松紧适中</div>
+                            <div class="product-price">¥158.00</div><a href="https://detail.tmall.com/item.htm?id=856759645943" class="product-link" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.alicdn.com/img/bao/uploaded/i4/i4/2186308801/O1CN01rS0qae2EsugTLwNNc_!!0-item_pic.jpg" alt="彩婴房礼盒装婴儿衣服">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">彩婴房礼盒装婴儿衣服</div>
+                            <div class="product-description">告别系带安全好穿，不起球不掉毛，新疆长绒棉，透气排湿</div>
+                            <div class="product-price">¥109.90</div>
+                            <a href="https://detail.tmall.com/item.htm?id=647530995490" class="product-link" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="recovery-items" class="tab-content">
+                <h3>身体恢复用品</h3>
+                <ul>
+                    <li><strong>收腹带</strong>：帮助子宫收缩，支撑腹部，减轻伤口疼痛</li>
+                    <li><strong>骨盆矫正带</strong>：帮助骨盆恢复正常位置，预防骨盆前倾</li>
+                    <li><strong>盆底肌修复产品</strong>：如盆底肌训练球或修复仪</li>
+                    <li><strong>瑜伽垫</strong>：用于产后恢复训练和轻度运动</li>
+                    <li><strong>红外线理疗灯</strong>：促进伤口愈合，消炎镇痛</li>
+                </ul>
+
+                <h3>伤口护理用品</h3>
+                <ul>
+                    <li><strong>消毒产品</strong>：碘伏或碘酒，用于伤口消毒</li>
+                    <li><strong>伤口修复产品</strong>：如生长因子凝胶、壳聚糖喷雾</li>
+                    <li><strong>会阴冲洗器/喷壶</strong>：用于清洁会阴部位</li>
+                    <li><strong>坐浴盆</strong>：放在马桶上使用，免蹲设计</li>
+                </ul>
+
+                <h3>乳房护理用品</h3>
+                <ul>
+                    <li><strong>乳头保护罩</strong>：缓解乳头疼痛和干燥</li>
+                    <li><strong>乳房按摩霜</strong>：促进乳腺疏通，预防乳腺堵塞</li>
+                    <li><strong>防溢乳垫</strong>：吸收溢出的乳汁，保持衣物干爽</li>
+                </ul>
+
+                <h3>营养补充品</h3>
+                <ul>
+                    <li><strong>复合维生素</strong>：补充产后所需营养素</li>
+                    <li><strong>钙铁锌补充剂</strong>：促进骨骼恢复，预防贫血</li>
+                    <li><strong>催乳营养品</strong>：如有需要，帮助提高乳汁分泌</li>
+                </ul>
+
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.alicdn.com/img/bao/uploaded/i4/i4/2215058705461/O1CN01lpc3YM1qDBqJknDFE_!!0-item_pic.jpg" alt="十月结晶塑形束腹带">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">十月结晶塑形束腹带</div>
+                            <div class="product-description">收胃防游离脂肪，力学撑腰防卷边，可自由调节腰围</div>
+                            <div class="product-price">¥49.90</div>
+                            <a href="https://detail.tmall.com/item.htm?id=711401832188" class="product-link" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.alicdn.com/img/bao/uploaded/i4/i3/2201285768563/O1CN01BaLZv52D7uX5fHFip_!!4611686018427385203-0-item_pic.jpg" alt="风尚志医用收腹带">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">风尚志医用收腹带</div>
+                            <div class="product-description">棉质材质，手术室可用，收紧骨盆，多段收腹</div>
+                            <div class="product-price">¥169.00</div>
+                            <a href="https://detail.tmall.com/item.htm?id=740554452930" class="product-link" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.alicdn.com/img/bao/uploaded/i4/i4/1846032817/O1CN01MaN1Z71WgEk3woX9d_!!4611686018427386289-0-item_pic.jpg" alt="Mom Jane全阶段哺乳文胸">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Mom Jane全阶段哺乳文胸</div>
+                            <div class="product-description">便捷前扣穿脱方便，抬手稳固不跑位，内里抗菌面料</div>
+                            <div class="product-price">¥69.00</div>
+                            <a href="https://detail.tmall.com/item.htm?id=857431721863" class="product-link" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.alicdn.com/img/bao/uploaded/i4/i3/2207873157466/O1CN01c4Sg4q251U3TwPfX2_!!4611686018427382106-0-item_pic.jpg" alt="嫚熙一次性防溢乳垫">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">嫚熙一次性防溢乳垫</div>
+                            <div class="product-description">一片奶量，高分子吸水树脂，轻薄如肤无感</div>
+                            <div class="product-price">¥22.90</div>
+                            <a href="https://detail.tmall.com/item.htm?id=616468327012" class="product-link" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.alicdn.com/img/bao/uploaded/i4/i1/635589078/O1CN01nRUQic2GvmU5O0F6W_!!635589078.jpg" alt="十月结晶产褥期卫生巾产妇专用">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">十月结晶产褥期卫生巾</div>
+                            <div class="product-description">产妇专用，不同尺寸适合产后不同阶段使用</div>
+                            <div class="product-price">¥99.00</div>
+                            <a href="https://detail.tmall.com/item.htm?id=773997320839" class="product-link" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.alicdn.com/img/bao/uploaded/i4/i2/2978398582/O1CN01QJ11hV2DGc4jujBjz_!!2978398582-0-tm_health.jpg" alt="薇塔贝尔孕妇产后修复营养片">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">薇塔贝尔产后修复营养片</div>
+                            <div class="product-description">英国进口，补充产后所需营养素</div>
+                            <div class="product-price">¥148.00</div>
+                            <a href="https://detail.tmall.com/item.htm?id=695159348959" class="product-link" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <h4>产后修复黄金期</h4>
+                    <p>产后0-6个月是身体恢复的黄金期，尤其是前42天至关重要。科学的产后修复可以预防和改善产后常见问题，如腹直肌分离、盆底功能障碍、骨盆前倾等。</p>
+                </div>
+
+                <div class="warning-box">
+                    <h4>产后修复注意事项</h4>
+                    <ul>
+                        <li>顺产后6-12小时可下床走动，3-5天后可做骨盆收缩运动</li>
+                        <li>剖腹产后2天可下床走动，一个月后可做伸展运动，6-8周后才适合腹肌训练</li>
+                        <li>避免过早进行剧烈运动，尤其是腹直肌未恢复前不要做卷腹运动</li>
+                        <li>保持均衡饮食，不要为减肥过度节食</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="documents" class="tab-content">
+                <h3>证件类</h3>
+                <ul>
+                    <li><strong>身份证</strong>：夫妻双方的</li>
+                    <li><strong>医保卡/生育保险凭证</strong></li>
+                    <li><strong>产检病历及所有检查报告</strong></li>
+                    <li><strong>准生证</strong>（如需要）</li>
+                    <li><strong>银行卡或现金</strong>：约5000元以上</li>
+                </ul>
+
+                <h3>其他必备物品</h3>
+                <ul>
+                    <li><strong>笔记本和笔</strong>：记录宝宝的喂奶、大小便时间等</li>
+                    <li><strong>相机/手机</strong>：记录宝宝出生的珍贵瞬间</li>
+                    <li><strong>充电器和充电宝</strong>：确保电子设备随时可用</li>
+                    <li><strong>餐具</strong>：饭盒、筷子、勺子等</li>
+                    <li><strong>红糖/巧克力</strong>：补充能量和产后补血</li>
+                </ul>
+
+                <div class="tip-box">
+                    <h4>待产包准备时间</h4>
+                    <p>建议在怀孕28周（7个月）开始准备，最晚不要超过36周（9个月）。提前准备可以避免临产时的慌乱，也给了你足够的时间挑选合适的产品。</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="checklist">
+            <h2>产后修复全面指南</h2>
+            
+            <div class="timeline">
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3>产后0-7天</h3>
+                        <p><strong>重点：</strong>伤口护理、子宫恢复、休息</p>
+                        <ul>
+                            <li>使用收腹带支撑腹部，减轻伤口疼痛</li>
+                            <li>定时更换产妇卫生巾，保持会阴部位清洁</li>
+                            <li>观察恶露情况，如有异常及时就医</li>
+                            <li>避免长时间站立或坐着，多休息</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <h3>产后1-2周</h3>
+                        <p><strong>重点：</strong>乳房护理、轻微活动</p>
+                        <ul>
+                            <li>正确使用哺乳文胸，预防乳房下垂</li>
+                            <li>可以开始做简单的呼吸和盆底肌收缩练习</li>
+                            <li>适当走动，但避免剧烈活动</li>
+                            <li>注意营养均衡，多喝水</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3>产后2-6周</h3>
+                        <p><strong>重点：</strong>盆底肌恢复、伤口愈合</p>
+                        <ul>
+                            <li>开始系统的盆底肌训练</li>
+                            <li>正确使用骨盆矫正带，帮助骨盆恢复</li>
+                            <li>伤口基本愈合，可以开始使用修复霜淡化疤痕</li>
+                            <li>避免提重物，预防子宫脱垂</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <h3>产后6周-3个月</h3>
+                        <p><strong>重点：</strong>体型恢复、腹直肌修复</p>
+                        <ul>
+                            <li>在医生指导下开始腹直肌修复训练</li>
+                            <li>可以增加适当的有氧运动，如散步、瑜伽</li>
+                            <li>继续使用收腹带和骨盆带</li>
+                            <li>注意补充钙质，预防骨质疏松</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3>产后3-6个月</h3>
+                        <p><strong>重点：</strong>全面恢复、体能提升</p>
+                        <ul>
+                            <li>可以开始更全面的体能训练</li>
+                            <li>继续盆底肌锻炼，预防尿失禁</li>
+                            <li>根据个人情况选择合适的运动方式</li>
+                            <li>保持健康的生活方式和饮食习惯</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>产后修复四大重点</h4>
+                <ol>
+                    <li><strong>子宫复旧</strong>：使用收腹带，适当按摩腹部，促进子宫收缩</li>
+                    <li><strong>盆底肌修复</strong>：进行凯格尔运动，使用盆底肌训练器，预防尿失禁和阴道松弛</li>
+                    <li><strong>腹直肌修复</strong>：在专业指导下进行腹直肌修复训练，避免腹直肌分离加重</li>
+                    <li><strong>骨盆恢复</strong>：使用骨盆矫正带，做骨盆倾斜运动，预防腰痛和骨盆前倾</li>
+                </ol>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
