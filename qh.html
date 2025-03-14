@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回忆照片+哈利波特+小动物主题求婚方案</title>
+    <style>
+        :root {
+            --primary-color: #8e44ad;
+            --secondary-color: #f1c40f;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --light-color: #f9f9f9;
+            --dark-color: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 25px 0 15px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 8px;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            margin: 20px 0 10px;
+            color: var(--dark-color);
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .intro {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .theme-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .theme-card {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .theme-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .theme-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .theme-card-content {
+            padding: 20px;
+        }
+        
+        .theme-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .product-price {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .product-features {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #6c3483;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border: 4px solid var(--primary-color);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -17px;
+        }
+        
+        .right::after {
+            left: -17px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .budget-section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin: 30px 0;
+        }
+        
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .budget-table th, .budget-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .budget-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .budget-table tr:last-child {
+            font-weight: bold;
+        }
+        
+        .budget-table tr:last-child td {
+            border-top: 2px solid var(--primary-color);
+            border-bottom: none;
+        }
+        
+        .tips-section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin: 30px 0;
+        }
+        
+        .tips-list {
+            list-style-type: none;
+        }
+        
+        .tips-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .tips-list li:before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+        
+        .conclusion {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .theme-section {
+                flex-direction: column;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 15px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>回忆照片+哈利波特+小动物主题求婚方案</h1>
+            <p>为相恋3年的爱情创造一场难忘的魔法时刻</p>
+        </header>
+        
+        <section class="intro">
+            <h2>方案概述</h2>
+            <p>根据您的需求，我们精心设计了一场融合回忆照片、哈利波特魔法元素和小动物主题的创意求婚方案。这个方案充分考虑了您女友的喜好，并在5000元预算内合理分配资源，确保整个求婚过程既浪漫难忘又不失个性化。</p>
+            <p>我们将通过巧妙的场景布置、精选的主题道具和精心设计的流程，带领您的女友踏上一段充满惊喜的魔法之旅，最终在感动的氛围中收获您的真挚告白和求婚戒指。</p>
+        </section>
+        
+        <section>
+            <h2>三大主题元素融合</h2>
+            
+            <div class="theme-section">
+                <div class="theme-card">
+                    <img src="https://img.alicdn.com/img/bao/uploaded/i4/i3/2200596444794/O1CN01shvRy41lHhEcasK4u_!!2200596444794.jpg" alt="回忆照片墙">
+                    <div class="theme-card-content">
+                        <h3>回忆照片墙</h3>
+                        <p>精选您与女友三年来的珍贵照片，按时间顺序布置成照片墙或照片路径，让她在求婚过程中重温美好回忆，唤起情感共鸣。</p>
+                    </div>
+                </div>
+                
+                <div class="theme-card">
+                    <img src="https://img.alicdn.com/img/bao/uploaded/i4/i3/3579088933/O1CN01j5cch12FrN1CXVs6I_!!3579088933.jpg" alt="哈利波特魔法元素">
+                    <div class="theme-card-content">
+                        <h3>哈利波特魔法元素</h3>
+                        <p>打造一个微型"霍格沃茨"场景，融入金色飞贼戒指盒、魔法棒和霍格沃茨录取通知书等元素，创造沉浸式魔法体验。</p>
+                    </div>
+                </div>
+                
+                <div class="theme-card">
+                    <img src="https://img.alicdn.com/img/bao/uploaded/i4/i3/2215922105960/O1CN01ees8Fh1ttjZOAQCmS_!!4611686018427387496-0-item_pic.jpg" alt="小动物主题装饰">
+                    <div class="theme-card-content">
+                        <h3>小动物主题装饰</h3>
+                        <p>通过可爱的小动物气球、玩偶和装饰品，点缀整个求婚场景，增添温馨可爱的氛围，迎合女友对小动物的喜爱。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>推荐商品</h2>
+            
+            <h3>场景布置核心商品</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://img.alicdn.com/img/bao/uploaded/i4/i3/2200596444794/O1CN01shvRy41lHhEcasK4u_!!2200596444794.jpg" alt="LED照片夹串灯">
+                    <div class="product-info">
+                        <div class="product-title">LED照片夹串灯</div>
+                        <div class="product-price">¥19.60</div>
+                        <div class="product-features">
+                            <p>- 可夹持20-50张照片</p>
+                            <p>- 温暖柔和的灯光效果</p>
+                            <p>- 电池供电，方便布置</p>
+                        </div>
+                        <a href="https://detail.tmall.com/item.htm?id=586925171708" class="btn" target="_blank">查看详情</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://img.alicdn.com/img/bao/uploaded/i4/i3/3579088933/O1CN01j5cch12FrN1CXVs6I_!!3579088933.jpg" alt="金色飞贼戒指盒">
+                    <div class="product-info">
+                        <div class="product-title">哈利波特金色飞贼戒指盒</div>
+                        <div class="product-price">¥138.00</div>
+                        <div class="product-features">
+                            <p>- 精致做工，可拆卸翅膀</p>
+                            <p>- 内部绒布衬里保护戒指</p>
+                            <p>- 完美还原电影道具</p>
+                        </div>
+                        <a href="https://detail.tmall.com/item.htm?id=803993353975" class="btn" target="_blank">查看详情</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://img.alicdn.com/img/bao/uploaded/i4/i3/2215922105960/O1CN01ees8Fh1ttjZOAQCmS_!!4611686018427387496-0-item_pic.jpg" alt="高级浪漫气球">
+                    <div class="product-info">
+                        <div class="product-title">小动物主题气球套装</div>
+                        <div class="product-price">¥34.00</div>
+                        <div class="product-features">
+                            <p>- 多种动物造型可选</p>
+                            <p>- 含电动打气筒</p>
+                            <p>- 浪漫色彩搭配</p>
+                        </div>
+                        <a href="https://detail.tmall.com/item.htm?id=861557952466" class="btn" target="_blank">查看详情</a>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>主题道具与装饰</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://img.alicdn.com/img/bao/uploaded/i4/i1/884436201/O1CN01cxwjSA1vg6c7ZPUEY_!!884436201.jpg" alt="照片夹子灯串">
+                    <div class="product-info">
+                        <div class="product-title">少女心LED相照片夹子灯串</div>
+                        <div class="product-price">¥9.90</div>
+                        <div class="product-features">
+                            <p>- 多种长度可选</p>
+                            <p>- 可用于照片墙布置</p>
+                            <p>- 温暖光效果</p>
+                        </div>
+                        <a href="https://detail.tmall.com/item.htm?id=622727017383" class="btn" target="_blank">查看详情</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://img.alicdn.com/img/bao/uploaded/i4/i3/1014736645/O1CN01Ysugrw1yxSNmjj6lN_!!1014736645.jpg" alt="网红彩灯房间浪漫生日表白照片墙">
+                    <div class="product-info">
+                        <div class="product-title">网红彩灯浪漫照片墙</div>
+                        <div class="product-price">¥50.00</div>
+                        <div class="product-features">
+                            <p>- 心形布置设计</p>
+                            <p>- 含LED灯饰</p>
+                            <p>- 适合室内装饰</p>
+                        </div>
+                        <a href="https://detail.tmall.com/item.htm?id=536108788289" class="btn" target="_blank">查看详情</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://img.alicdn.com/img/bao/uploaded/i4/i1/1884372048/O1CN01QuBJJi1R01nQxUflL_!!1884372048.jpg" alt="哈利波特金色飞贼戒指盒">
+                    <div class="product-info">
+                        <div class="product-title">高级版金色飞贼戒指盒</div>
+                        <div class="product-price">¥258.00</div>
+                        <div class="product-features">
+                            <p>- 带魔法棒和链子</p>
+                            <p>- 可拆分翅膀</p>
+                            <p>- 更高品质做工</p>
+                        </div>
+                        <a href="https://detail.tmall.com/item.htm?id=636512395729" class="btn" target="_blank">查看详情</a>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>氛围营造商品</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://img.alicdn.com/img/bao/uploaded/i4/i3/2207277281163/O1CN01Zw6CAE1KShb0lgGqQ_!!0-item_pic.jpg" alt="高级感求婚布置装饰灯">
+                    <div class="product-info">
+                        <div class="product-title">高级感求婚布置装饰灯</div>
+                        <div class="product-price">¥59.00</div>
+                        <div class="product-features">
+                            <p>- 高级感网红简约风</p>
+                            <p>- 多种字母灯可选</p>
+                            <p>- 急速发货</p>
+                        </div><a href="https://detail.tmall.com/item.htm?id=815682557028" class="btn" target="_blank">查看详情</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://img.alicdn.com/img/bao/uploaded/i4/i1/4103885837/O1CN017WI1gD1szOQrxYeBG_!!0-item_pic.jpg" alt="俏尚无烟蜡烛">
+                    <div class="product-info">
+                        <div class="product-title">俏尚无烟蜡烛</div>
+                        <div class="product-price">¥73.80</div>
+                        <div class="product-features">
+                            <p>- 电子蜡烛，安全无烟</p>
+                            <p>- 浪漫温暖灯光</p>
+                            <p>- 适合求婚场景</p>
+                        </div><a href="https://detail.tmall.com/item.htm?id=596673313106" class="btn" target="_blank">查看详情</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://img.alicdn.com/img/bao/uploaded/i4/i2/2746379542/O1CN01XplKUD2KMIIPRHZAz_!!2746379542.jpg" alt="LED气球背景墙装扮布置套餐">
+                    <div class="product-info">
+                        <div class="product-title">LED气球背景墙装扮套餐</div>
+                        <div class="product-price">¥268.00</div>
+                        <div class="product-features">
+                            <p>- 浪漫表白背景墙</p>
+                            <p>- LED灯光效果</p>
+                            <p>- 一站式布置套餐</p>
+                        </div>
+                        <a href="https://detail.tmall.com/item.htm?id=893203788510" class="btn" target="_blank">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>求婚流程设计</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>第一阶段：神秘邀约</h3>
+                        <p>通过一封仿制的"霍格沃茨录取通知书"邀请女友前往求婚地点。信中可以暗示这是一次特别的魔法之旅，引发她的好奇心和期待。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>第二阶段：魔法回忆之路</h3>
+                        <p>在通往主求婚场地的路上，布置LED照片夹串灯，悬挂您与女友三年来的珍贵照片。每张照片旁可以放置简短的文字或小动物图案，讲述你们的爱情故事。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>第三阶段：哈利波特魔法寻宝</h3>
+                        <p>设计一个简单的魔法寻宝游戏，让女友在装饰有小动物元素的场景中寻找线索。每个线索都藏在哈利波特元素中，如魔法书、魔法棒等，引导她最终找到金色飞贼。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>第四阶段：金色飞贼的秘密</h3>
+                        <p>当她找到金色飞贼并打开时，会发现里面藏着您精心准备的戒指。这时，您可以单膝跪地，说出准备好的求婚词，正式求婚。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>第五阶段：魔法庆祝</h3>
+                        <p>求婚成功后，可以准备一些小惊喜，如放飞小动物形状的气球，播放您提前准备的照片视频集锦，或者分享一块哈利波特主题的小蛋糕，庆祝这个特别的时刻。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="budget-section">
+            <h2>预算分配</h2>
+            
+            <table class="budget-table">
+                <thead>
+                    <tr>
+                        <th>项目</th>
+                        <th>商品/服务</th>
+                        <th>预算(元)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>场地布置</td>
+                        <td>LED照片夹串灯、气球装饰、背景墙套餐</td>
+                        <td>600</td>
+                    </tr>
+                    <tr>
+                        <td>哈利波特主题道具</td>
+                        <td>金色飞贼戒指盒、魔法棒、霍格沃茨信件</td>
+                        <td>500</td>
+                    </tr>
+                    <tr>
+                        <td>小动物元素</td>
+                        <td>小动物气球、装饰品、玩偶</td>
+                        <td>300</td>
+                    </tr>
+                    <tr>
+                        <td>灯光与氛围</td>
+                        <td>LED装饰灯、电子蜡烛、投影灯</td>
+                        <td>400</td>
+                    </tr>
+                    <tr>
+                        <td>照片打印与处理</td>
+                        <td>照片冲印、相框、照片墙制作</td>
+                        <td>300</td>
+                    </tr>
+                    <tr>
+                        <td>鲜花装饰</td>
+                        <td>玫瑰花束、花瓣装饰</td>
+                        <td>400</td>
+                    </tr>
+                    <tr>
+                        <td>音乐与多媒体</td>
+                        <td>蓝牙音箱、背景音乐、视频制作</td>
+                        <td>300</td>
+                    </tr>
+                    <tr>
+                        <td>纪念品</td>
+                        <td>定制3D水晶照片、纪念相册</td>
+                        <td>500</td>
+                    </tr>
+                    <tr>
+                        <td>其他杂项</td>
+                        <td>小食品、饮料、应急物品</td>
+                        <td>200</td>
+                    </tr>
+                    <tr>
+                        <td>预留应急资金</td>
+                        <td>突发情况处理</td>
+                        <td>1500</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong>总计</strong></td>
+                        <td><strong>5000</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p>注：预算分配可根据实际情况进行调整，建议保留一定的应急资金，以应对突发情况。</p>
+        </section>
+        
+        <section class="tips-section">
+            <h2>求婚成功小贴士</h2>
+            
+            <ul class="tips-list">
+                <li><strong>提前彩排：</strong>在正式求婚前，建议您提前彩排整个流程，确保每个环节都能顺利进行。</li>
+                <li><strong>找帮手：</strong>可以请一两个可靠的朋友协助您布置现场或拍摄照片/视频，记录这个重要时刻。</li>
+                <li><strong>准备好求婚词：</strong>写下您想对女友说的话，表达您的真挚情感和未来承诺。</li>
+                <li><strong>关注细节：</strong>确保戒指安全，照片质量清晰，灯光效果适宜，音乐播放正常。</li>
+                <li><strong>保持自然：</strong>即使紧张也不要慌张，真诚的情感表达比完美的流程更重要。</li>
+                <li><strong>备用方案：</strong>准备一个简单的备用方案，以应对可能的天气变化或技术问题。</li>
+                <li><strong>享受过程：</strong>不要过于紧张，享受这个特别的时刻，它将成为你们爱情故事中珍贵的一部分。</li>
+            </ul>
+        </section><section class="conclusion">
+            <h2>结语</h2>
+            <p>这个融合回忆照片、哈利波特魔法元素和小动物主题的求婚方案，不仅考虑了您女友的喜好，也体现了您的用心和创意。通过精心设计的流程和场景，您将带领她踏上一段充满惊喜和感动的魔法之旅，最终在美好的氛围中收获她的"Yes"。</p>
+            <p>记住，最重要的不是华丽的布置或完美的流程，而是您表达的真挚情感和共同创造的美好回忆。祝您求婚成功，开启幸福的新篇章！</p>
+        </section>
+        
+        <footer>
+            <p>© 2025 回忆照片+哈利波特+小动物主题求婚方案 | 为相恋3年的爱情创造一场难忘的魔法时刻</p>
+        </footer>
+    </div>
+</body>
+</html>
